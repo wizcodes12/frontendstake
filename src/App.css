@@ -1,0 +1,504 @@
+/* App.css */
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: black;
+  /* background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); */
+  color: #ffffff;
+  line-height: 1.6;
+}
+.cell {
+  background-color: #ddd;
+  transition: background-color 0.3s;
+}
+
+.cell.safe {
+  background-color: #90EE90;
+}
+
+.cell.mine {
+  background-color: #FF6347;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button Styles */
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Home Page Styles */
+.home-page {
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.home-page h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.start-game-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #f39c12;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.start-game-btn:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
+}
+
+/* Game Page Styles */
+.game-page {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.game-setup {
+  text-align: center;
+}
+
+.game-setup h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.game-setup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.game-setup input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.game-board {
+  text-align: center;
+}
+
+.game-board h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.cell {
+  width: 130px; /* Adjust size as needed */
+  height: 128px; /* Adjust size as needed */
+  background-size: cover; /* Ensure image covers the cell */
+  background-position: center; /* Center the image */
+  border: 1px solid #ccc; /* Add border if needed */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cell:hover {
+  opacity: 0.8; /* Optional: Add hover effect */
+}
+
+.end-game-btn {
+  background-color: #e74c3c;
+}
+
+.end-game-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.active-games {
+  display: grid;
+  gap: 1rem;
+}
+
+.game-item {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.game-item span {
+  margin-right: 1rem;
+}
+
+.game-item button {
+  margin: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-page h1 {
+    font-size: 2rem;
+  }
+
+  .game-page, .admin-panel {
+    padding: 1rem;
+  }
+
+  .grid {
+    gap: 5px;
+  }
+
+  .game-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .game-item button {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.home-page, .game-page, .admin-panel {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.start-game-btn:hover {
+  animation: pulse 1s infinite;
+}
+
+
+
+.game-result {
+  text-align: center;
+}
+
+.game-result h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.game-result p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Timer Styles */
+.timer {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.timer .bar {
+  height: 100%;
+  background-color: #4CAF50;
+  transition: width 1s linear;
+}
+
+
+
+.countdown-messagetest
+{
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:xx-large;
+}
+
+.countdown-timertest
+{
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:xx-large;
+}
+
+#middle {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.sliding-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: slideText 3s linear infinite;
+  margin-bottom: 50px;
+}
+
+@keyframes slideText {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+.start-game-btn1 {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #0a0a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.start-game-btn1:hover {
+  background-color: #5cbced;
+  transform: scale(1.05);
+}
+
+.start-g{
+
+  
+  font-size: 0.9rem;
+  background-color: #ffffff;
+  color: #0a0a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+
+}
+
+.start-g:hover {
+  background-color: #5cbced;
+  transform: scale(1.05);
+}
+
+.start-t{
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5.5rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  /* animation: slideText 3s linear infinite; */
+  margin-bottom: 50px;
+
+}
+
+.end-game-btn1
+{
+
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #72f6b2;
+  color: #0a0a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+}
+
+
+.end-game-btn1:hover {
+  background-color: #ee6565;
+  transform: scale(1.05);
+}
+
+
+.ID1{
+
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5.5rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  
+  margin-bottom: 50px;
+
+
+}
+
+.ID2{
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  
+
+
+}
+
+.M2{
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  
+
+}
+
+.userwin{
+  font-size: 1rem;
+  background-color: #5def90;
+  color: #0a0a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+
+}
+.userwin:hover{
+  background-color: #47ff1e;
+  transform: scale(1.05);
+  color: black;
+}
+
+.userloose1{
+  font-size: 0.9rem;
+  background-color: #ff9270;
+  color: #0a0a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+
+}
+
+.userloose1:hover{
+  background-color: #ff1919;
+  transform: scale(1.05);
+  color: white;
+}
+
+.admin-style{
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem; /* Ensure only one font-size property */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  
+
+}
+
+.footer{
+  font-size: 20px;
+  color: #ccc;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+margin-left: -170px;
+margin-top: 200px;
+
+}
