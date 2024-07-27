@@ -65,7 +65,7 @@ function GamePage() {
 
   const loadGame = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/games/${id}`);
+      const response = await axios.get(`https://wiz-stake-apibackend.vercel.app/${id}`);
       setMines(response.data.mines);
       initializeGrid(response.data.mines);
       setAdminOutcome(response.data.adminOutcome);
@@ -76,7 +76,7 @@ function GamePage() {
 
   const checkAdminOutcome = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+      const response = await axios.get(`https://wiz-stake-apibackend.vercel.app/${gameId}`);
       if (response.data.adminOutcome !== adminOutcome) {
         setAdminOutcome(response.data.adminOutcome);
       }
@@ -87,7 +87,7 @@ function GamePage() {
 
   const generateGameId = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/games/start', { mines: parseInt(mines) });
+      const response = await axios.post('https://wiz-stake-apibackend.vercel.app/', { mines: parseInt(mines) });
       setGameId(response.data.gameId);
       navigate(`/game?id=${response.data.gameId}`);
       initializeGrid(parseInt(mines));
@@ -156,7 +156,7 @@ function GamePage() {
 
   const handleEndGame = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/games/${gameId}/end`);
+      await axios.post(`https://wiz-stake-apibackend.vercel.app/${gameId}/end`);
       navigate('/');
     } catch (error) {
       console.error('Error ending game:', error);
